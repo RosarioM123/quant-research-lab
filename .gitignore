@@ -1,0 +1,19 @@
+# Secrets — never commit real credentials
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Data (raw snapshots may be large; keep out of git by default)
+data/raw/
+data/features/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
