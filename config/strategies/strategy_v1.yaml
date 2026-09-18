@@ -1,0 +1,24 @@
+# Strategy v1 — draft. Parameters below are STARTING POINTS FOR BACKTESTING,
+# not choices. Per experiment-design.md §5: every parameter must be documented,
+# backtested, and sensitivity-reported. Material changes -> strategy_v2.yaml.
+name: strategy_v1
+version: 1
+status: draft
+seed: 42
+families: [momentum, mean_reversion, xsectional, volatility, volume, regime, news]
+combiner:
+  type: ridge
+  alpha: 1.0
+sleeves:  # independent attribution; the ensemble may not hide a bad sleeve
+  - momentum
+  - mean_reversion
+  - news
+  - regime
+  - ensemble
+execution:
+  decision_time: "close"     # signals computed on closed bars only
+  execution_time: "next_open" # decisions execute at next bar's open (documented choice)
+  embargo_days: 5            # gap between train and test blocks
+trade_threshold:
+  min_expected_return_bps: 20.0  # expected return must clear 20 bps net of costs
+  min_confidence: 0.0

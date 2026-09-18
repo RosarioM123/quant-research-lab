@@ -1,0 +1,11 @@
+# Trading-cost assumptions — conservative, explicit, frozen before Day 1.
+# Paper fills are simulated; these assumptions are deliberately pessimistic
+# and enter performance accounting (never adjusted post-hoc).
+version: 1
+status: candidate
+slippage_bps_one_way: 10.0   # 10 bps per side applied to every simulated fill
+commission_per_trade: 0.0    # Alpaca: $0 commissions
+borrow_cost_bps: 0.0         # long-only: no borrows exist
+notes:
+  - "Slippage is a model input, not a backtest decoration (see quant-framework.md §4)."
+  - "Paper-vs-backtest slippage divergence is tracked as its own metric."

@@ -1,0 +1,29 @@
+# Risk limits — deterministic, frozen before Day 1. The risk engine
+# (risk/engine.py) enforces these; violations are REJECTED, never warned about.
+version: 1
+status: candidate
+experiment:
+  capital: 100.0            # EXACTLY $100 simulated. Not a default — a constraint.
+  calendar_days: 30         # 30 calendar days (~21 trading days)
+portfolio:
+  long_only: true           # shorting is structurally impossible in this codebase
+  leverage_allowed: false
+  margin_allowed: false
+  derivatives_allowed: false   # no options, futures, or other derivatives
+  max_position_pct: 0.25       # 25% of equity per symbol
+  max_gross_exposure_pct: 0.95 # long-only gross cap; no leverage by construction
+  min_trade_notional: 5.0      # ignore dust orders below $5
+loss_limits:
+  max_daily_loss_pct: 0.05     # -5% of day-start equity -> halt new orders rest of day
+  max_trades_per_day: 10
+liquidity:
+  min_price: 5.0                   # penny stocks (< $5) are rejected outright
+  min_avg_daily_dollar_volume: 10000000
+volatility:
+  max_annualized_vol: 1.0          # no new position if 20d realized vol > 100%
+orders:
+  types_allowed: ["market", "limit"]
+  tif_allowed: ["day"]
+  fractional_allowed: true
+kill_switch:
+  flag_file: "KILL"                # if this file exists in repo root: halt everything

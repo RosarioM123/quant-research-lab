@@ -1,0 +1,28 @@
+# Universe — candidate list, NOT YET FROZEN.
+# Per docs/research/experiment-design.md §4 this list must be frozen before Day 1
+# (selection criteria below), recorded in the research journal, and never changed after.
+# Until then: status is "candidate". Do not run the experiment on this file.
+version: 1
+status: candidate
+selection_criteria:
+  price_min: 5.0
+  avg_daily_dollar_volume_min: 10000000
+  exchanges: ["NYSE", "NASDAQ"]
+  max_symbols: 30
+symbols:
+  # SPY is always included: frozen benchmark + regime input.
+  - SPY
+  # Candidate large-cap liquid names (illustrative only — final list frozen pre-Day-1).
+  - AAPL
+  - MSFT
+  - NVDA
+  - AMZN
+  - META
+  - GOOGL
+  - AVGO
+  - JPM
+  - XOM
+  - UNH
+  - MA
+  - HD
+  - PG
