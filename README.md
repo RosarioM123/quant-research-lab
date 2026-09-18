@@ -1,13 +1,36 @@
 # SIGNAL — quant-research-lab
 
-A miniature quantitative research lab: a systematic **$100 paper-trading
-experiment** run over 30 calendar days. SIGNAL is the software; the experiment
-has **not** been run. Everything here is code, tests, and fixtures — no real
-trading, no real money, no performance claims.
+[![CI](https://github.com/RosarioM123/quant-research-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/RosarioM123/quant-research-lab/actions/workflows/ci.yml)
+
+A miniature quantitative research lab in Python: six signal families, a ridge model combiner with explainability, constrained long-only portfolio construction, a SHA-256 hash-chained paper-trading ledger, and a React + Sass dashboard.
 
 > **Paper trading only. No real money. Ever.** The execution layer refuses to
 > address any endpoint except `https://paper-api.alpaca.markets`, and refuses
 > to start at all unless `PAPER_TRADING=true`.
+>
+> SIGNAL is the **software**; the 30-day trading experiment has **not** been
+> run. Everything here is code, tests, and fixtures — no real trading, no
+> performance claims.
+
+## Demo
+
+<!-- TODO: drop a screen recording or GIF of the dashboard here (dashboard/ renders fixture data). -->
+
+## Quickstart — 30 seconds
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install numpy pandas pyyaml pytest
+.venv/bin/python -m pytest tests/ -q   # 76 tests, all green
+```
+
+Dashboard (fixture data only, no backend):
+
+```bash
+cd dashboard
+npm install
+npm run dev      # local preview
+```
 
 ## Architecture
 
@@ -55,14 +78,6 @@ position`), independently verifiable by the C# tool in `tools/LedgerVerify/`.
 | `tools/LedgerVerify/` | C# (.NET 8) | Independent ledger + constraint verifier |
 | `docs/` | Markdown | Architecture and research design documents |
 
-## Python: run the tests
-
-```bash
-python3 -m venv .venv
-.venv/bin/pip install numpy pandas pyyaml pytest
-.venv/bin/python -m pytest tests/ -q
-```
-
 ## Dashboard
 
 The dashboard renders committed fixture data only (generated from the replay
@@ -98,6 +113,3 @@ had no .NET SDK; see `tools/LedgerVerify/README.md`.
 - `docs/architecture.md` — system boundaries
 - `docs/research/experiment-design.md` — the 30-day experiment protocol
 - `docs/research/news-engine.md` — news pipeline design
-- `docs/research/quant-framework.md` — signal/model methodology
-
-License: proprietary — see `LICENSE` (unchanged).
