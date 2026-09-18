@@ -1,0 +1,1 @@
+{"fixture": true, "simulated": true, "note": "Synthetic seeded prices (seed 42). Illustrates dashboard layout only \u2014 NOT real trading or real performance.", "cash": 73.5062, "positions": {"AAPL": 0.214006}, "last_prices": {"SPY": 123.66, "AAPL": 124.24, "MSFT": 122.12}}

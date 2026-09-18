@@ -1,0 +1,167 @@
+// SIGNAL design tokens. Dark quant-terminal theme.
+$bg: #0d1117;
+$panel: #161b22;
+$border: #30363d;
+$text: #e6edf3;
+$muted: #8b949e;
+$green: #3fb950;
+$red: #f85149;
+$blue: #58a6ff;
+$amber: #d29922;
+$mono: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+$sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: $bg;
+  color: $text;
+  font-family: $sans;
+  font-size: 14px;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+
+.header {
+  border-bottom: 1px solid $border;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+
+  h1 {
+    margin: 0 0 4px;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+  }
+
+  .subtitle {
+    color: $muted;
+    font-size: 13px;
+  }
+}
+
+.fixture-banner {
+  background: rgba($amber, 0.12);
+  border: 1px solid rgba($amber, 0.45);
+  color: $amber;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 24px;
+  font-size: 13px;
+
+  strong { color: #e3b341; }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  background: $panel;
+  border: 1px solid $border;
+  border-radius: 8px;
+  padding: 16px;
+
+  h2 {
+    margin: 0 0 12px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: $muted;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: $mono;
+  font-size: 12px;
+
+  th {
+    text-align: left;
+    color: $muted;
+    font-weight: 600;
+    padding: 6px 8px;
+    border-bottom: 1px solid $border;
+  }
+
+  td {
+    padding: 6px 8px;
+    border-bottom: 1px solid rgba($border, 0.5);
+  }
+}
+
+.pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+
+  &.allow { background: rgba($green, 0.15); color: $green; }
+  &.reject { background: rgba($red, 0.15); color: $red; }
+  &.buy { background: rgba($blue, 0.15); color: $blue; }
+  &.sell { background: rgba($amber, 0.15); color: $amber; }
+}
+
+.ledger-list {
+  font-family: $mono;
+  font-size: 12px;
+  max-height: 320px;
+  overflow-y: auto;
+
+  .row {
+    display: flex;
+    gap: 12px;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba($border, 0.5);
+
+    .seq { color: $muted; min-width: 42px; }
+    .type { color: $blue; min-width: 120px; }
+    .hash { color: $muted; overflow: hidden; text-overflow: ellipsis; }
+  }
+}
+
+.equity-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+
+  .axis { stroke: $border; }
+  .tick { fill: $muted; font-size: 10px; font-family: $mono; }
+  .line-strategy { fill: none; stroke: $blue; stroke-width: 2; }
+  .line-benchmark { fill: none; stroke: $muted; stroke-width: 1.5; stroke-dasharray: 5 4; }
+  .legend { font-size: 11px; font-family: $mono; }
+}
+
+.stat-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  background: $panel;
+  border: 1px solid $border;
+  border-radius: 8px;
+  padding: 12px 18px;
+  min-width: 150px;
+
+  .label { color: $muted; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .value { font-family: $mono; font-size: 20px; margin-top: 4px; }
+
+  &.pos .value { color: $green; }
+  &.neg .value { color: $red; }
+}
